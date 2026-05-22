@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.sound = {
+  flake.modules.nixos.core = {
     config,
     lib,
     ...

@@ -45,15 +45,15 @@
     };
 
     environment = {
-      systemPackages = with pkgs; [
-        qt6.qtwayland
-        qt6.qtsvg
-        kdePackages.breeze
-        kdePackages.breeze.qt5
-        kdePackages.breeze-icons
-        kdePackages.dolphin
-        kdePackages.okular
-        kdePackages.filelight
+      systemPackages = [
+        pkgs.qt6.qtwayland
+        pkgs.qt6.qtsvg
+        pkgs.kdePackages.breeze
+        pkgs.kdePackages.breeze.qt5
+        pkgs.kdePackages.breeze-icons
+        pkgs.kdePackages.dolphin
+        pkgs.kdePackages.okular
+        pkgs.kdePackages.filelight
       ];
     };
 
@@ -65,9 +65,9 @@
           "org.freedesktop.impl.portal.ScreenCast" = "gnome";
         };
       };
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-gnome
-        kdePackages.xdg-desktop-portal-kde
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gnome
+        pkgs.kdePackages.xdg-desktop-portal-kde
       ];
       xdgOpenUsePortal = true;
     };

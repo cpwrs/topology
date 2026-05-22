@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.ssh = {...}: {
+  flake.modules.nixos.core = {...}: {
     services.openssh = {
       enable = true;
       settings = {
@@ -8,5 +8,9 @@
         KbdInteractiveAuthentication = false;
       };
     };
+  };
+
+  flake.modules.darwin.core = {
+    services.openssh.enable = true;
   };
 }

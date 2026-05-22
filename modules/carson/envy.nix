@@ -1,5 +1,5 @@
-{inputs, ...}: {
-  flake.modules.nixos.carson = {pkgs, ...}: {
+{inputs, ...}: let
+  envy = {pkgs, ...}: {
     users.users.carson.packages = [
       inputs.envy.packages.${pkgs.system}.default
       pkgs.ripgrep
@@ -10,4 +10,7 @@
       MANPAGER = "nvim +Man!";
     };
   };
+in {
+  flake.modules.nixos.carson = envy;
+  flake.modules.darwin.carson = envy;
 }

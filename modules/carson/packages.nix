@@ -1,24 +1,41 @@
 {inputs, ...}: {
   flake.modules.nixos.carson = {pkgs, ...}: {
-    users.users.carson.packages = with pkgs; [
-      opencode
-      gdb
-      python3
-      lazygit
-      nmap
-      gh
-      devenv
-      kicad-small
-      d-spy
-      fzf
-      hotspot
+    users.users.carson.packages = [
+      pkgs.opencode
+      pkgs.gdb
+      pkgs.python3
+      pkgs.nmap
+      pkgs.devenv
+      pkgs.kicad-small
+      pkgs.d-spy
+      pkgs.fzf
+      pkgs.hotspot
       inputs.helium.packages.${pkgs.system}.default
-      zathura
-      obs-studio
-      obsidian
-      thunderbird
-      wireshark
-      gimp
+      pkgs.zathura
+      pkgs.obs-studio
+      pkgs.obsidian
+      pkgs.thunderbird
+      pkgs.wireshark
+      pkgs.gimp
+    ];
+  };
+
+  flake.modules.darwin.carson = {pkgs, ...}: {
+    users.users.carson.packages = [
+      pkgs.opencode
+      pkgs.gdb
+      pkgs.python3
+      pkgs.nmap
+      pkgs.devenv
+      pkgs.fzf
+      inputs.helium.packages.${pkgs.system}.default
+    ];
+
+    homebrew.casks = [
+      "kicad"
+      "obsidian"
+      "thunderbird"
+      "wireshark"
     ];
   };
 }

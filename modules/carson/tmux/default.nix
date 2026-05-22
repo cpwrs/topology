@@ -1,5 +1,5 @@
-{
-  flake.modules.nixos.carson = {
+{...}: let
+  tmux = {
     lib,
     pkgs,
     ...
@@ -12,4 +12,7 @@
       };
     };
   };
+in {
+  flake.modules.nixos.carson = tmux;
+  flake.modules.darwin.carson = tmux;
 }

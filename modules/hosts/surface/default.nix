@@ -2,13 +2,7 @@
   config,
   inputs,
   ...
-}: let
-  host = {
-    name = "surface";
-    stateVersion = "25.11";
-    system = "x86_64-linux";
-  };
-in {
+}: {
   flake.nixosConfigurations.surface = inputs.nixpkgs.lib.nixosSystem {
     modules = with config.flake.modules.nixos; [
       surface
@@ -19,7 +13,11 @@ in {
   };
 
   flake.modules.nixos.surface = {...}: {
-    inherit host;
+    networking.hostName = "surface";
+    nixpkgs.hostPlatform = "x86_64-linux";
+    system.stateVersion = "25.11";
+    time.timeZone = "America/Chicago";
+
     services.brightness.enable = true;
     services.evremap = {
       enable = true;

@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.upower = {...}: {
+  flake.modules.nixos.core = {...}: {
     services.upower.enable = true;
   };
 }

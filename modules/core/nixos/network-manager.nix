@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.network-manager = {
+  flake.modules.nixos.core = {
     lib,
     config,
     ...

@@ -1,15 +1,15 @@
 {
-  flake.modules.nixos.fonts = {pkgs, ...}: {
+  flake.modules.nixos.core = {pkgs, ...}: {
     fonts = {
-      packages = with pkgs; [
-        dejavu_fonts
-        inter
-        nerd-fonts.jetbrains-mono
+      packages = [
+        pkgs.dejavu_fonts
+        pkgs.inter
+        pkgs.nerd-fonts.jetbrains-mono
 
-        noto-fonts
-        noto-fonts-cjk-sans
-        noto-fonts-lgc-plus
-        noto-fonts-color-emoji
+        pkgs.noto-fonts
+        pkgs.noto-fonts-cjk-sans
+        pkgs.noto-fonts-lgc-plus
+        pkgs.noto-fonts-color-emoji
       ];
 
       fontconfig = {

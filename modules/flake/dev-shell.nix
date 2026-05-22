@@ -1,13 +1,20 @@
 {inputs, ...}: {
-  perSystem = {pkgs, ...}: {
+  perSystem = {
+    lib,
+    pkgs,
+    ...
+  }: {
     devShells.default = pkgs.mkShell {
-      packages = with pkgs; [
-        nixd
-        alejandra
-        age
-        inputs.agenix.packages.${pkgs.system}.default
-        nixos-facter
-      ];
+      packages =
+        [
+          pkgs.nixd
+          pkgs.alejandra
+          pkgs.age
+          inputs.agenix.packages.${pkgs.system}.default
+        ]
+        ++ lib.optionals pkgs.stdenv.isLinux [
+          pkgs.nixos-facter
+        ];
     };
   };
 }

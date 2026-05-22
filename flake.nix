@@ -17,6 +17,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     envy.url = "github:cpwrs/envy";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     import-tree.url = "github:vic/import-tree";

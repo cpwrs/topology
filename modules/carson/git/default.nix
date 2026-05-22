@@ -1,5 +1,5 @@
-{self, ...}: {
-  flake.modules.nixos.carson = {
+{self, ...}: let
+  git = {
     lib,
     pkgs,
     ...
@@ -16,10 +16,10 @@
       + "\n"
     );
   in {
-    users.users.carson.packages = with pkgs; [
-      git
-      lazygit
-      gh
+    users.users.carson.packages = [
+      pkgs.git
+      pkgs.lazygit
+      pkgs.gh
     ];
 
     hjem.users.carson.xdg.config.files = {
@@ -88,4 +88,7 @@
       };
     };
   };
+in {
+  flake.modules.nixos.carson = git;
+  flake.modules.darwin.carson = git;
 }

@@ -1,10 +1,10 @@
 {
   flake.modules.nixos.niri = {pkgs, ...}: {
     environment = {
-      systemPackages = with pkgs; [
-        niri
-        xwayland-satellite
-        wl-clipboard
+      systemPackages = [
+        pkgs.niri
+        pkgs.xwayland-satellite
+        pkgs.wl-clipboard
       ];
       sessionVariables = {
         NIXOS_OZONE_WL = "1";

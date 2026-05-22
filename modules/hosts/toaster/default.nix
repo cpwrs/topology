@@ -2,13 +2,7 @@
   config,
   inputs,
   ...
-}: let
-  host = {
-    name = "toaster";
-    stateVersion = "25.11";
-    system = "x86_64-linux";
-  };
-in {
+}: {
   flake.nixosConfigurations.toaster = inputs.nixpkgs.lib.nixosSystem {
     modules = with config.flake.modules.nixos; [
       toaster
@@ -18,5 +12,10 @@ in {
     ];
   };
 
-  flake.modules.nixos.toaster = {inherit host;};
+  flake.modules.nixos.toaster = {
+    networking.hostName = "toaster";
+    nixpkgs.hostPlatform = "x86_64-linux";
+    system.stateVersion = "25.11";
+    time.timeZone = "America/Chicago";
+  };
 }

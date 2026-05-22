@@ -1,11 +1,12 @@
-{
-  flake.modules.nixos.carson = {
+{...}: let
+  fish = {
     config,
     lib,
     pkgs,
     ...
   }: {
     programs.fish.enable = true;
+    environment.shells = [pkgs.fish];
     users.users.carson.shell = pkgs.fish;
 
     hjem.users.carson.xdg.config.files = {
@@ -26,7 +27,7 @@
         '';
       };
 
-      "fish/functions/fish_mode_prompt" = {
+      "fish/functions/fish_mode_prompt.fish" = {
         clobber = true;
         text = ''
           function fish_mode_prompt
@@ -44,4 +45,7 @@
       };
     };
   };
+in {
+  flake.modules.nixos.carson = fish;
+  flake.modules.darwin.carson = fish;
 }

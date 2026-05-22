@@ -1,5 +1,5 @@
-{
-  flake.modules.nixos.direnv = {...}: {
+let
+  direnv = {...}: {
     programs = {
       direnv = {
         enable = true;
@@ -7,4 +7,7 @@
       };
     };
   };
+in {
+  flake.modules.nixos.core = direnv;
+  flake.modules.darwin.core = direnv;
 }
