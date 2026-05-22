@@ -33,6 +33,6 @@
       };
     };
 
-    networking.firewall.allowedTCPPorts = [22];
+    networking.firewall.allowedTCPPorts = lib.singleton 22;
   };
 }

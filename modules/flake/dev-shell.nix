@@ -12,9 +12,7 @@
           pkgs.age
           inputs.agenix.packages.${pkgs.system}.default
         ]
-        ++ lib.optionals pkgs.stdenv.isLinux [
-          pkgs.nixos-facter
-        ];
+        ++ lib.optionals pkgs.stdenv.isLinux (lib.singleton pkgs.nixos-facter);
     };
   };
 }

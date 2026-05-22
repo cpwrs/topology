@@ -1,5 +1,9 @@
 {...}: let
-  nix = {pkgs, ...}: {
+  nix = {
+    lib,
+    pkgs,
+    ...
+  }: {
     nixpkgs.config.allowUnfree = true;
     nix = {
       settings = {
@@ -7,9 +11,7 @@
           "https://cache.garnix.io"
           "https://cache.nixos.org"
         ];
-        extra-trusted-public-keys = [
-          "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
-        ];
+        extra-trusted-public-keys = lib.singleton "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=";
         experimental-features = [
           "flakes"
           "nix-command"
@@ -22,11 +24,11 @@
       channel.enable = false;
     };
 
-    environment.systemPackages = [pkgs.nh];
+    environment.systemPackages = lib.singleton pkgs.nh;
   };
 in {
-  flake.modules.nixos.core = {
-    imports = [nix];
+  flake.modules.nixos.core = {lib, ...}: {
+    imports = lib.singleton nix;
     nix = {
       gc = {
         automatic = true;
@@ -36,7 +38,7 @@ in {
       };
       optimise = {
         automatic = true;
-        dates = ["4:00"];
+        dates = lib.singleton "4:00";
       };
       settings.trusted-users = ["root" "@build" "@wheel" "@admin"];
     };

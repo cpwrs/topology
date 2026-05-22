@@ -6,7 +6,7 @@
     ...
   }: {
     programs.fish.enable = true;
-    environment.shells = [pkgs.fish];
+    environment.shells = lib.singleton pkgs.fish;
     users.users.carson.shell = pkgs.fish;
 
     hjem.users.carson.xdg.config.files = {

@@ -30,19 +30,19 @@
     };
 
     config = lib.mkIf cfg.enable {
-      environment.systemPackages = [pkgs.brightnessctl];
+      environment.systemPackages = lib.singleton pkgs.brightnessctl;
 
       services.actkbd = {
         enable = true;
         bindings = [
           {
-            keys = [cfg.downKey];
-            events = ["key"];
+            keys = lib.singleton cfg.downKey;
+            events = lib.singleton "key";
             command = "/run/current-system/sw/bin/systemctl start brightness-down.service";
           }
           {
-            keys = [cfg.upKey];
-            events = ["key"];
+            keys = lib.singleton cfg.upKey;
+            events = lib.singleton "key";
             command = "/run/current-system/sw/bin/systemctl start brightness-up.service";
           }
         ];

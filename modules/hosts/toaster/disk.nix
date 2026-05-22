@@ -1,5 +1,5 @@
 {...}: {
-  flake.modules.nixos.toaster = {
+  flake.modules.nixos.toaster = {lib, ...}: {
     disko.devices.disk."nvme0n1" = disk: {
       device = "/dev/${disk.config.name}";
       type = "disk";
@@ -27,7 +27,7 @@
 
               content = {
                 type = "btrfs";
-                extraArgs = ["-f"];
+                extraArgs = lib.singleton "-f";
                 subvolumes = {
                   "@" = {
                     mountpoint = "/";

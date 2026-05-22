@@ -1,6 +1,10 @@
 {inputs, ...}: {
-  flake.modules.nixos.kde = {pkgs, ...}: {
-    imports = [inputs.qtengine.nixosModules.default];
+  flake.modules.nixos.kde = {
+    lib,
+    pkgs,
+    ...
+  }: {
+    imports = lib.singleton inputs.qtengine.nixosModules.default;
     programs.qtengine = {
       enable = true;
 
@@ -31,9 +35,9 @@
     security.polkit.enable = true;
     systemd = {
       user.services.polkit-agent = {
-        wants = ["graphical-session.target"];
-        wantedBy = ["graphical-session.target"];
-        after = ["graphical-session.target"];
+        wants = lib.singleton "graphical-session.target";
+        wantedBy = lib.singleton "graphical-session.target";
+        after = lib.singleton "graphical-session.target";
         serviceConfig = {
           Type = "simple";
           ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
@@ -61,7 +65,7 @@
       enable = true;
       config = {
         common = {
-          default = ["kde"];
+          default = lib.singleton "kde";
           "org.freedesktop.impl.portal.ScreenCast" = "gnome";
         };
       };

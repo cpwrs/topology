@@ -12,7 +12,7 @@
     ];
   };
 
-  flake.modules.nixos.surface = {...}: {
+  flake.modules.nixos.surface = {lib, ...}: {
     networking.hostName = "surface";
     nixpkgs.hostPlatform = "x86_64-linux";
     system.stateVersion = "25.11";
@@ -24,13 +24,11 @@
       settings = {
         device_name = "Microsoft Surface Keyboard";
         phys = "usb-0000:00:14.0-1.3/input0";
-        dual_role = [
-          {
-            input = "KEY_CAPSLOCK";
-            hold = ["KEY_LEFTCTRL"];
-            tap = ["KEY_ESC"];
-          }
-        ];
+        dual_role = lib.singleton {
+          input = "KEY_CAPSLOCK";
+          hold = lib.singleton "KEY_LEFTCTRL";
+          tap = lib.singleton "KEY_ESC";
+        };
       };
     };
   };

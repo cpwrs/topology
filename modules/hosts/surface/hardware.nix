@@ -1,8 +1,10 @@
 {inputs, ...}: {
-  flake.modules.nixos.surface = {config, ...}: {
-    imports = [
-      inputs.nixos-hardware.nixosModules.microsoft-surface-common
-    ];
+  flake.modules.nixos.surface = {
+    config,
+    lib,
+    ...
+  }: {
+    imports = lib.singleton inputs.nixos-hardware.nixosModules.microsoft-surface-common;
 
     hardware.facter.reportPath = ./facter.json;
 
@@ -26,7 +28,7 @@
     '';
 
     # Can't use open drivers, this card doesn't have GSP firmware
-    services.xserver.videoDrivers = ["nvidia"];
+    services.xserver.videoDrivers = lib.singleton "nvidia";
     hardware = {
       microsoft-surface.kernelVersion = "stable";
       nvidia = {

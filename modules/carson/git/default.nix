@@ -74,8 +74,8 @@
             border = "single";
             theme = {
               activeBorderColor = ["#aa93ff" "bold"];
-              inactiveBorderColor = ["#3d3028"];
-              searchingActiveBorderColor = ["white"];
+              inactiveBorderColor = lib.singleton "#3d3028";
+              searchingActiveBorderColor = lib.singleton "white";
             };
           };
           git.overrideGpg = true;

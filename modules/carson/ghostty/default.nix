@@ -1,5 +1,6 @@
 {...}: let
   ghostty = {
+    lib,
     pkgs,
     ...
   }: let
@@ -8,9 +9,7 @@
       then pkgs.ghostty-bin
       else pkgs.ghostty;
   in {
-    users.users.carson.packages = [
-      package
-    ];
+    users.users.carson.packages = lib.singleton package;
     hjem.users.carson.xdg.config.files = {
       "ghostty/config" = {
         source = ./config;

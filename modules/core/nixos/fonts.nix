@@ -1,5 +1,9 @@
 {
-  flake.modules.nixos.core = {pkgs, ...}: {
+  flake.modules.nixos.core = {
+    lib,
+    pkgs,
+    ...
+  }: {
     fonts = {
       packages = [
         pkgs.dejavu_fonts
@@ -14,10 +18,10 @@
 
       fontconfig = {
         defaultFonts = {
-          serif = ["DejaVu Serif"];
-          sansSerif = ["DejaVu Sans"];
-          monospace = ["JetBrainsMono Nerd Font"];
-          emoji = ["Noto Color Emoji"];
+          serif = lib.singleton "DejaVu Serif";
+          sansSerif = lib.singleton "DejaVu Sans";
+          monospace = lib.singleton "JetBrainsMono Nerd Font";
+          emoji = lib.singleton "Noto Color Emoji";
         };
       };
     };
@@ -25,7 +29,7 @@
     console = {
       earlySetup = true;
       font = "Lat2-Terminus16";
-      packages = [pkgs.terminus_font];
+      packages = lib.singleton pkgs.terminus_font;
     };
   };
 }
