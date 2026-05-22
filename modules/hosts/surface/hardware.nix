@@ -19,21 +19,11 @@
 
     swapDevices = [];
 
-    boot = {
-      loader = {
-        systemd-boot = {
-          enable = true;
-          configurationLimit = 5;
-        };
-        efi.canTouchEfiVariables = true;
-      };
-
-      # pinctrl_sunrisepoint needs to be loaded before soc_button_array
-      # for power and volume rocker presses to be recognized
-      extraModprobeConfig = ''
-        softdep soc_button_array pre: pinctrl_sunrisepoint
-      '';
-    };
+    # pinctrl_sunrisepoint needs to be loaded before soc_button_array
+    # for power and volume rocker presses to be recognized
+    boot.extraModprobeConfig = ''
+      softdep soc_button_array pre: pinctrl_sunrisepoint
+    '';
 
     # Can't use open drivers, this card doesn't have GSP firmware
     services.xserver.videoDrivers = ["nvidia"];
