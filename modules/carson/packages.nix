@@ -12,7 +12,6 @@
       d-spy
       fzf
       hotspot
-      inputs.envy.packages.${pkgs.system}.default
       inputs.helium.packages.${pkgs.system}.default
       zathura
       obs-studio
@@ -20,7 +19,6 @@
       thunderbird
       wireshark
       gimp
-
     ];
   };
 }

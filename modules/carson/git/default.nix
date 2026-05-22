@@ -19,6 +19,7 @@
     users.users.carson.packages = with pkgs; [
       git
       lazygit
+      gh
     ];
 
     hjem.users.carson.xdg.config.files = {
@@ -79,6 +80,11 @@
           };
           git.overrideGpg = true;
         };
+      };
+
+      "fish/conf.d/git_aliases.fish" = {
+        clobber = true;
+        source = ./git_aliases.fish;
       };
     };
   };

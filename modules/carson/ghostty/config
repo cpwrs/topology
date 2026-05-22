@@ -21,14 +21,15 @@ palette = 13=#aa93ff
 palette = 14=#95fbfb
 palette = 15=#ffffff
 
-font-family = "Berkeley Mono"
-font-size = 15
-# Getting 4x scroll, 0.25 behaves like other terminals
-mouse-scroll-multiplier = 0.25
+font-family = "Berkeley Mono SemiCondensed"
+font-family-bold = "Berkeley Mono Bold SemiCondensed"
+font-size = 13.5
+keybind = ctrl+equal=increase_font_size:0.5
+keybind = ctrl+plus=increase_font_size:0.5
+keybind = ctrl+minus=decrease_font_size:0.5
 
 command = "tmux new-session -A -s scripting"
 gtk-single-instance = false
 
-window-padding-x = 4
-window-padding-y = 5
-# window-decoration = false
+window-padding-x = 3
+window-padding-y = 3
