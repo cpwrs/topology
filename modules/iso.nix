@@ -18,11 +18,19 @@
       enableAllFirmware = true;
     };
 
+    nixpkgs.config.allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) [
+        "broadcom-bt-firmware"
+        "b43-firmware"
+        "xone-dongle-firmware"
+        "facetimehd-calibration"
+        "facetimehd-firmware"
+      ];
+
     users.users.root = {
       initialHashedPassword = "";
       openssh.authorizedKeys.keys = builtins.attrValues self.keys.yubikeys;
     };
-    services.getty.autologinUser = "root";
 
     services.openssh = {
       enable = true;
