@@ -1,4 +1,4 @@
-{...}: let
+let
   fzf = {
     lib,
     pkgs,

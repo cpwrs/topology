@@ -1,8 +1,4 @@
-{
-  self,
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   flake.modules.nixos.iso = {
     config,
     lib,
@@ -27,20 +23,6 @@
         "facetimehd-firmware"
       ];
 
-    users.users.root = {
-      initialHashedPassword = "";
-      openssh.authorizedKeys.keys = builtins.attrValues self.keys.yubikeys;
-    };
-
-    services.openssh = {
-      enable = true;
-      settings = {
-        PermitRootLogin = "prohibit-password";
-        PasswordAuthentication = false;
-        KbdInteractiveAuthentication = false;
-      };
-    };
-
-    networking.firewall.allowedTCPPorts = lib.singleton 22;
+    users.users.root.initialHashedPassword = "";
   };
 }
