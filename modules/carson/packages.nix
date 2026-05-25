@@ -1,7 +1,6 @@
 {inputs, ...}: {
   flake.modules.nixos.carson = {pkgs, ...}: {
     users.users.carson.packages = [
-      pkgs.opencode
       pkgs.gdb
       pkgs.python3
       pkgs.nmap
@@ -22,7 +21,6 @@
 
   flake.modules.darwin.carson = {pkgs, ...}: {
     users.users.carson.packages = [
-      pkgs.opencode
       pkgs.gdb
       pkgs.python3
       pkgs.nmap
