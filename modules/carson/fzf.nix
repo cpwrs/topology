@@ -6,6 +6,15 @@ let
   }: {
     users.users.carson.packages = lib.singleton pkgs.fzf;
     hjem.users.carson.environment.sessionVariables = lib.nameValuePair "FZF_DEFAULT_OPTS" "--color 16";
+  };
+in {
+  flake.modules.darwin.carson = fzf;
+  flake.modules.nixos.carson = {
+    lib,
+    pkgs,
+    ...
+  }: {
+    imports = lib.singleton fzf;
     hjem.users.carson.xdg.config.files."fish/functions/fman.fish" = {
       clobber = true;
       text = ''
@@ -18,7 +27,4 @@ let
       '';
     };
   };
-in {
-  flake.modules.nixos.carson = fzf;
-  flake.modules.darwin.carson = fzf;
 }
