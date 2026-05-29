@@ -1,4 +1,4 @@
-# TODO: Consider moving to agenix-rekey to avoid this
+# TODO: Move to agenix-rekey if more users are added.
 let
   inherit
     (builtins)

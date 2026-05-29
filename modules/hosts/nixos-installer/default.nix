@@ -12,7 +12,11 @@
     ];
   };
 
-  flake.modules.nixos.installer = {lib, ...}: {
+  flake.modules.nixos.installer = {
+    pkgs,
+    lib,
+    ...
+  }: {
     users.users.root.openssh.authorizedKeys.keys = builtins.attrValues self.keys.yubikeys;
 
     services.openssh = {
@@ -23,6 +27,13 @@
         KbdInteractiveAuthentication = false;
       };
     };
+
+    environment.systemPackages = [
+      pkgs.nixos-facter
+      pkgs.nixos-install
+      pkgs.disko
+      pkgs.git
+    ];
 
     networking.firewall.allowedTCPPorts = lib.singleton 22;
   };

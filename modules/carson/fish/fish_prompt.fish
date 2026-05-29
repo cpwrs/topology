@@ -9,12 +9,12 @@ function fish_prompt
             set -a parts (set_color red)$last_status(set_color --reset)
         end
 
-        set -a parts (set_color --bold)$PWD(set_color --reset)
+        set -a parts (set_color --bold)(prompt_pwd --dir-length=0)(set_color --reset)
 
         set -l git (fish_git_prompt '%s')
 
         if test -n "$git"
-          set -l git_part (set_color brmagenta)'('$git')'(set_color --reset)
+          set -l git_part (set_color green)'('$git')'(set_color --reset)
           set -a parts $git_part
         end
 
