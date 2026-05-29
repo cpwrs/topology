@@ -39,9 +39,15 @@
         clobber = true;
         source = ./fish_prompt.fish;
       };
+
       "fish/functions/fish_greeting.fish" = {
         clobber = true;
         source = ./fish_greeting.fish;
+      };
+
+      "fish/functions/sesh.fish" = {
+        clobber = true;
+        source = ./sesh.fish;
       };
     };
   };

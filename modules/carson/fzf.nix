@@ -5,7 +5,7 @@ let
     ...
   }: {
     users.users.carson.packages = lib.singleton pkgs.fzf;
-    hjem.users.carson.environment.sessionVariables = lib.nameValuePair "FZF_DEFAULT_OPTS" "--color 16";
+    hjem.users.carson.environment.sessionVariables."FZF_DEFAULT_OPTS" = "--color 16";
   };
 in {
   flake.modules.darwin.carson = fzf;
