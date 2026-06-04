@@ -1,17 +1,18 @@
 {...}: let
-  nix = {
-    lib,
-    pkgs,
-    ...
-  }: {
+  nix = {pkgs, ...}: {
     nixpkgs.config.allowUnfree = true;
+
     nix = {
       settings = {
         extra-substituters = [
           "https://cache.garnix.io"
           "https://cache.nixos.org"
         ];
-        extra-trusted-public-keys = lib.singleton "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=";
+
+        extra-trusted-public-keys = [
+          "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+        ];
+
         experimental-features = [
           "flakes"
           "nix-command"
@@ -19,16 +20,17 @@
 
         http-connections = 50;
         warn-dirty = false;
-        trusted-users = ["root" "@admin"];
       };
+
       channel.enable = false;
     };
 
-    environment.systemPackages = lib.singleton pkgs.nh;
+    environment.systemPackages = [pkgs.nh];
   };
 in {
-  flake.modules.nixos.core = {lib, ...}: {
-    imports = lib.singleton nix;
+  flake.modules.nixos.core = {
+    imports = [nix];
+
     nix = {
       gc = {
         automatic = true;
@@ -36,13 +38,25 @@ in {
         dates = "weekly";
         options = "--delete-older-than 7d";
       };
+
       optimise = {
         automatic = true;
-        dates = lib.singleton "4:00";
+        dates = ["4:00"];
       };
-      settings.trusted-users = ["root" "@build" "@wheel" "@admin"];
+
+      settings.trusted-users = [
+        "root"
+        "@wheel"
+      ];
     };
   };
 
-  flake.modules.darwin.core = nix;
+  flake.modules.darwin.core = {
+    imports = [nix];
+
+    nix.settings.trusted-users = [
+      "root"
+      "@admin"
+    ];
+  };
 }
