@@ -11,8 +11,9 @@
       air = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIWkpjTxptu9AAQSatBe4gHzejFDcUCuXGY/GR4Dzg7v carson@air";
     };
     yubikeys = {
-      chain-a = "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIGz0/cWd0RSuDNKN3XDY8creMcJbZWX5fJOxd/q41zWIAAAACnNzaDpjYXJzb24= yubi@chain";
+      home-a = "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIGz0/cWd0RSuDNKN3XDY8creMcJbZWX5fJOxd/q41zWIAAAACnNzaDpjYXJzb24= yubi@home";
       backup-a = "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIOkDkSBKET0B94kIcGXK0C4BwVfPXFMLLKtrbmwOsFlyAAAACnNzaDpjYXJzb24= yubi@backup";
+      keychain-c = "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIMQDc0F20kqmVPo597llz7ssh0FRCD5T0+nA9BtpyeDuAAAABHNzaDo= yubi@keychain";
     };
   };
 }
