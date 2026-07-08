@@ -4,6 +4,10 @@
       pkgs.gdb
       pkgs.python3
       pkgs.nmap
+      pkgs.dig
+      pkgs.openssl
+      pkgs.tcpdump
+      pkgs.traceroute
       pkgs.devenv
       pkgs.kicad-small
       pkgs.d-spy
