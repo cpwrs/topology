@@ -10,7 +10,8 @@
     };
   };
 
-  flake.modules.darwin.core = {
+  flake.modules.darwin.core = {pkgs, ...}: {
     services.openssh.enable = true;
+    environment.systemPackages = [pkgs.openssh];
   };
 }
