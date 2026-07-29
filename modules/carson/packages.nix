@@ -20,6 +20,7 @@
       pkgs.thunderbird
       pkgs.wireshark
       pkgs.gimp
+      pkgs.anki
     ];
   };
 
@@ -30,6 +31,7 @@
       pkgs.nmap
       pkgs.devenv
       pkgs.fzf
+      pkgs.anki
       inputs.helium.packages.${pkgs.system}.default
     ];
 
