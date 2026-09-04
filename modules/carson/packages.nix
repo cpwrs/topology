@@ -13,7 +13,7 @@
       pkgs.d-spy
       pkgs.fzf
       pkgs.hotspot
-      inputs.helium.packages.${pkgs.system}.default
+      inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
       pkgs.zathura
       pkgs.obs-studio
       pkgs.obsidian
@@ -32,7 +32,7 @@
       pkgs.devenv
       pkgs.fzf
       pkgs.anki
-      inputs.helium.packages.${pkgs.system}.default
+      inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     homebrew.casks = [

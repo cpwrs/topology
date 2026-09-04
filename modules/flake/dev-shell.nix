@@ -10,9 +10,9 @@
           pkgs.nixd
           pkgs.alejandra
           pkgs.age
-          inputs.agenix.packages.${pkgs.system}.default
+          inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
         ]
-        ++ lib.optionals pkgs.stdenv.isLinux (lib.singleton pkgs.nixos-facter);
+        ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux (lib.singleton pkgs.nixos-facter);
     };
   };
 }

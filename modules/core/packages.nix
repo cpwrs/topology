@@ -16,7 +16,7 @@ let
         pkgs.ripgrep
         pkgs.vim
       ]
-      ++ lib.optionals pkgs.stdenv.isLinux [
+      ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
         pkgs.binutils
         pkgs.pciutils
         pkgs.usbutils

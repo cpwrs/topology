@@ -1,7 +1,7 @@
 {inputs, ...}: let
   envy = {pkgs, ...}: {
     users.users.carson.packages = [
-      inputs.envy.packages.${pkgs.system}.default
+      inputs.envy.packages.${pkgs.stdenv.hostPlatform.system}.default
       pkgs.ripgrep
       pkgs.fd
     ];
