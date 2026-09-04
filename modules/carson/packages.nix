@@ -31,11 +31,11 @@
       pkgs.nmap
       pkgs.devenv
       pkgs.fzf
-      pkgs.anki
       inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     homebrew.casks = [
+      "anki"
       "kicad"
       "obsidian"
       "thunderbird"
