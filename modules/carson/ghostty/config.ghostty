@@ -1,0 +1,13 @@
+theme = americano
+
+font-family = "Berkeley Mono SemiCondensed"
+font-family-bold = "Berkeley Mono Bold SemiCondensed"
+font-size = 13.5
+keybind = ctrl+equal=increase_font_size:0.5
+keybind = ctrl+plus=increase_font_size:0.5
+keybind = ctrl+minus=decrease_font_size:0.5
+
+gtk-single-instance = false
+
+window-padding-x = 3
+window-padding-y = 3

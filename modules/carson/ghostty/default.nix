@@ -12,7 +12,11 @@
     users.users.carson.packages = lib.singleton package;
     hjem.users.carson.xdg.config.files = {
       "ghostty/config" = {
-        source = ./config;
+        source = ./config.ghostty;
+        clobber = true;
+      };
+      "ghostty/themes/americano" = {
+        source = ./americano.ghostty;
         clobber = true;
       };
     };
