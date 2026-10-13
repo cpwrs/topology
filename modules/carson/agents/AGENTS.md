@@ -1,0 +1,6 @@
+- Be concise and direct when responding. Don't use praise or superlatives.
+- Do not implement changes before determining if the existing design and data structures can support the change cleanly.
+- Prefer clear and correct code without leaky abstractions or unnecessary special cases.
+- Leave brief, to the point comments when the code's logic isn't easy to follow.
+- Don't treat design and discussion prompts as instructions to begin making changes.
+- Use the repository's existing workflows to run and test changes.
